@@ -1,6 +1,6 @@
 {
   "name": "@ironsource/parse-content-range-header",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Parse an http response Content-Range header",
   "license": "MIT",
   "author": {
