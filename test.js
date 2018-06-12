@@ -31,7 +31,7 @@ describe('parseContentRangeHeader', () => {
 		let actual = parseContentRangeHeader(header)
 		expect(actual).to.eql({
 			isRangeSatisfiable: true,
-			range: { start: 0, end: 50},
+			range: { start: 0, end: 50 },
 			unit: 'bytes',
 			isSizeKnown: false,
 			size: '*'
@@ -45,11 +45,18 @@ describe('parseContentRangeHeader', () => {
 		}).to.throw(Error, 'missing unit separator')
 	})
 
-	it('throws an error if unit are missing', () => {
+	it('throws an error if unit is missing', () => {
 		let header = ' '
 		expect(() => {
 			parseContentRangeHeader(header)
 		}).to.throw(Error, 'missing unit value')
+	})
+
+	it('throws an error if size separator is missing', () => {
+		let header = 'bytes 0-100'
+		expect(() => {
+			parseContentRangeHeader(header)
+		}).to.throw(Error, 'missing size separator')
 	})
 
 	it('throws an error if range is invalid', () => {
@@ -66,13 +73,6 @@ describe('parseContentRangeHeader', () => {
 		}).to.throw(Error, 'invalid range start value')
 	})
 
-	it('throws an error if size separator is missing', () => {
-		let header = 'bytes 0-100'
-		expect(() => {
-			parseContentRangeHeader(header)
-		}).to.throw(Error, 'missing size separator')
-	})
-
 	it('throws an error if range end is not an integer', () => {
 		let header = 'bytes 0-i500/1000'
 		expect(() => {
@@ -87,7 +87,7 @@ describe('parseContentRangeHeader', () => {
 		}).to.throw(Error, 'range start is greater than range end')
 	})
 
-	it('throws an error if size is not an integer', () => {
+	it('throws an error if size is known but is not an integer', () => {
 		let header = 'bytes 0-500/lkjs'
 		expect(() => {
 			parseContentRangeHeader(header)

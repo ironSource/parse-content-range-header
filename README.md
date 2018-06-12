@@ -11,9 +11,13 @@
 ```js
 const parseContentRangeHeader = require('parse-content-range-header')
 
-console.log(parseContentRangeHeader('bytes 0-100/1000') )
-console.log(parseContentRangeHeader('bytes */1000') )
-console.log(parseContentRangeHeader('bytes 0-100/*') )
+try {
+    console.log(parseContentRangeHeader('bytes 0-100/1000') )
+    console.log(parseContentRangeHeader('bytes */1000') )
+    console.log(parseContentRangeHeader('bytes 0-100/*') )
+} catch (e) {
+    console.error(e)
+}
 ```
 
 ## api
