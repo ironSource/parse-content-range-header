@@ -21,9 +21,5 @@
     "http",
     "parse",
     "parser"
-  ],
-  "engines": {
-    "node": ">=0.10.0",
-    "npm": ">=2.0.0"
-  }
+  ]
 }
