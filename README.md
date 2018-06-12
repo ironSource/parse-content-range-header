@@ -2,14 +2,14 @@
 
 **Parse an http response Content-Range header**
 
-[![npm status](http://img.shields.io/npm/v/parse-content-range-header.svg?style=flat-square)](https://www.npmjs.org/package/parse-content-range-header) 
+[![npm status](http://img.shields.io/npm/v/@ironsource/parse-content-range-header.svg?style=flat-square)](https://www.npmjs.org/package/parse-content-range-header) 
 
 ## example
 
-`npm i -S parse-content-range-header`
+`npm i -S @ironsource/parse-content-range-header`
 
 ```js
-const parseContentRangeHeader = require('parse-content-range-header')
+const parseContentRangeHeader = require('@ironsource/parse-content-range-header')
 
 try {
     console.log(parseContentRangeHeader('bytes 0-100/1000') )
