@@ -6,7 +6,7 @@ describe('parseContentRangeHeader', () => {
 		let header = 'bytes 0-500/1000'
 		let actual = parseContentRangeHeader(header)
 		expect(actual).to.eql({
-			isRangeSatisfiable: true,
+			isRangeSatisfied: true,
 			range: { start: 0, end: 500 },
 			unit: 'bytes',
 			isSizeKnown: true,
@@ -18,7 +18,7 @@ describe('parseContentRangeHeader', () => {
 		let header = 'bytes */1000'
 		let actual = parseContentRangeHeader(header)
 		expect(actual).to.eql({
-			isRangeSatisfiable: false,
+			isRangeSatisfied: false,
 			range: '*',
 			unit: 'bytes',
 			isSizeKnown: true,
@@ -30,7 +30,7 @@ describe('parseContentRangeHeader', () => {
 		let header = 'bytes 0-50/*'
 		let actual = parseContentRangeHeader(header)
 		expect(actual).to.eql({
-			isRangeSatisfiable: true,
+			isRangeSatisfied: true,
 			range: { start: 0, end: 50 },
 			unit: 'bytes',
 			isSizeKnown: false,

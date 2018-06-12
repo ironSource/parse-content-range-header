@@ -30,7 +30,7 @@ function parseContentRangeHeader(headerValue) {
 	let rangeSeparator = headerValue.indexOf('-', unitSeparator + 1)
 
 	let range
-	let isRangeSatisfiable
+	let isRangeSatisfied
 
 	if (rangeSeparator > -1) {
 		let rangeStart = parseInt(headerValue.substring(unitSeparator + 1, rangeSeparator))
@@ -48,14 +48,14 @@ function parseContentRangeHeader(headerValue) {
 		}
 
 		range = { start: rangeStart, end: rangeEnd }
-		isRangeSatisfiable = true
+		isRangeSatisfied = true
 	} else {
 		range = headerValue.substring(unitSeparator + 1, sizeSeparator)
 		if (range !== '*') {
 			throw new Error('invalid range')
 		}
 
-		isRangeSatisfiable = false
+		isRangeSatisfied = false
 	}
 
 	let size = headerValue.substring(sizeSeparator + 1)
@@ -76,13 +76,13 @@ function parseContentRangeHeader(headerValue) {
 	/**
 	 *    @name ParseResult
 	 *    @type {Object}
-	 *    @property {Object|String} range - range start and range end, if range is not satisfiable (`isRangeSatisfiable === false`), then this will be a `*`
+	 *    @property {Object|String} range - range start and range end, if range is not satisfiable (`isRangeSatisfied === false`), then this will be a `*`
 	 *    @property {Number} range.start
 	 *    @property {Number} range.end
-	 *    @property {Boolean} isRangeSatisfiable - a flag indicating if the server can satisfy the range request or not
+	 *    @property {Boolean} isRangeSatisfied - a flag indicating if the server can satisfy the range request or not
 	 *    @property {String} unit - the unit of the range, usually this will be `bytes`
 	 *    @property {Number|String} size - the full size of the resource. If the size is not known (`isSizeKnown === false`) then this will be a `*`
 	 *    @property {Boolean} isSizeKnown - a flag indicating if the server knows the size of the resource or not
 	 */
-	return { range, isRangeSatisfiable, unit, size, isSizeKnown }
+	return { range, isRangeSatisfied, unit, size, isSizeKnown }
 }
