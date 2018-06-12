@@ -3,6 +3,7 @@
 **Parse an http response Content-Range header**
 
 [![npm status](http://img.shields.io/npm/v/@ironsource/parse-content-range-header.svg?style=flat-square)](https://www.npmjs.org/package/parse-content-range-header) 
+[![Travis](https://img.shields.io/travis/ironsource/parse-content-range-header.svg)](https://travis-ci.org/ironSource/parse-content-range-header)
 
 ## example
 
