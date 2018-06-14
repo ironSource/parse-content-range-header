@@ -26,6 +26,18 @@ describe('parseContentRangeHeader', () => {
 		})
 	})
 
+	it.only('parses a Content-Range header <unit> */*', () => {
+		let header = 'bytes */*'
+		let actual = parseContentRangeHeader(header)
+		expect(actual).to.eql({
+			isRangeSatisfied: false,
+			range: '*',
+			unit: 'bytes',
+			isSizeKnown: false,
+			size: '*'
+		})
+	})
+
 	it('parses a Content-Range header <unit> <range start>-<range end>/*', () => {
 		let header = 'bytes 0-50/*'
 		let actual = parseContentRangeHeader(header)
